@@ -1,0 +1,3 @@
+Set-Content .gitignore ".vs/
+bin/
+obj/"
