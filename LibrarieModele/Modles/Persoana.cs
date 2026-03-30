@@ -1,4 +1,4 @@
-﻿namespace LibraryApp.Models
+﻿namespace LibrarieModele.Models
 {
     public class Persoana
     {

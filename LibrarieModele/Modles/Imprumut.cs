@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LibraryApp.Models
+﻿namespace LibrarieModele.Models
 {
     public class Imprumut
     {
