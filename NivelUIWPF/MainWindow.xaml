@@ -58,12 +58,12 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="303*"/>
+                    <ColumnDefinition Width="460*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- ===== COLOANA STANGA: Detalii carte ===== -->
-                <StackPanel Grid.Column="0" Margin="5">
+                <StackPanel Grid.Column="0" Margin="5,5,98,5">
                     <TextBlock Text="Detalii carte"
                                FontSize="18" FontWeight="Bold"
                                Margin="0,0,0,10"/>
@@ -82,7 +82,7 @@
                 </StackPanel>
 
                 <!-- ===== COLOANA DREAPTA: Formular ===== -->
-                <StackPanel Grid.Column="1" Margin="5">
+                <StackPanel Margin="4,5,5,5" Grid.Column="1">
 
                     <!-- RadioButton pentru selectia operatiei -->
                     <TextBlock Text="Tip operație"
