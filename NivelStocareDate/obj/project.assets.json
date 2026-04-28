@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj",
+      "projectUniqueName": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj",
       "projectName": "NivelStocareDate",
-      "projectPath": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj",
+      "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj",
       "packagesPath": "C:\\Users\\iserb\\.nuget\\packages\\",
-      "outputPath": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\obj\\",
+      "outputPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -59,8 +59,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj": {
-              "projectPath": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj"
+            "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj": {
+              "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj"
             }
           }
         }

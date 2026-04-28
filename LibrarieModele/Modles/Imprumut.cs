@@ -2,15 +2,24 @@
 {
     public class Imprumut
     {
-        public Carte Carte { get; set; }
+        public int Id { get; set; }
         public Persoana Persoana { get; set; }
+        public Carte Carte { get; set; }
         public DateTime DataImprumut { get; set; }
+        public DateTime? DataReturnare { get; set; }
 
-        public Imprumut(Carte carte, Persoana persoana)
+        public Imprumut(int id, Persoana persoana, Carte carte, DateTime dataImprumut)
         {
-            Carte = carte;
+            Id = id;
             Persoana = persoana;
-            DataImprumut = DateTime.Now;
+            Carte = carte;
+            DataImprumut = dataImprumut;
+            DataReturnare = null;
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Persoana: {Persoana.Nume}, Carte: {Carte.Titlu}, Data imprumut: {DataImprumut}, Data returnare: {DataReturnare}";
         }
     }
 }

@@ -1,0 +1,12 @@
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\bin\Debug\net8.0\LibrarieModele.deps.json
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\bin\Debug\net8.0\LibrarieModele.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\bin\Debug\net8.0\LibrarieModele.pdb
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.GeneratedMSBuildEditorConfig.editorconfig
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.AssemblyInfoInputs.cache
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.AssemblyInfo.cs
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.csproj.CoreCompileInputs.cache
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.sourcelink.json
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\refint\LibrarieModele.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\LibrarieModele.pdb
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\LibrarieModele\obj\Debug\net8.0\ref\LibrarieModele.dll

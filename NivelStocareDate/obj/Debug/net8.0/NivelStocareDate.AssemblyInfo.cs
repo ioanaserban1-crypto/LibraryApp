@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ba06df078926f2403600c525ce8f75a3fa9dab6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25531384162b74ba7dc205d39233d358afb6c3ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
