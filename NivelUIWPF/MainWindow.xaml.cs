@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 using NivelUIWPF.ViewModels;
 using LibrarieModele.Enums;
 using LibrarieModele.Models;
-using LibraryApp; // pentru Constante
+using LibraryApp;
 
 namespace NivelUIWPF
 {
     public partial class MainWindow : Window
     {
-        // LAB9: Lista de carti folosita de ComboBox si ListBox
+        // codul tau original
         private List<Carte> listaCarte = new List<Carte>();
+
+        // LAB10: ObservableCollection pentru autori — UI se actualizeaza automat
+        private ObservableCollection<Autor> listaAutori = new ObservableCollection<Autor>();
+
+        // LAB10: contor ID autori
+        private int nextIdAutor = 4;
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new CarteViewModel();
 
-            // Initializam lista de carti cu cateva exemple
             Autor autor1 = new Autor(1, "Marin Preda");
             Autor autor2 = new Autor(2, "Mihai Eminescu");
             Autor autor3 = new Autor(3, "Ion Creanga");
@@ -28,26 +34,27 @@ namespace NivelUIWPF
             listaCarte.Add(new Carte(2, "Luceafărul", autor2, 5, GenCarte.Poezie));
             listaCarte.Add(new Carte(3, "Amintiri din copilărie", autor3, 8, GenCarte.Roman));
 
-            // LAB9: Populam ListBox-ul cu valorile enum-ului GenCarte
+            // LAB10: initializam si lista de autori
+            listaAutori.Add(autor1);
+            listaAutori.Add(autor2);
+            listaAutori.Add(autor3);
+
             SeteazaListBoxGen(lstGenCarte);
             SeteazaListBoxGen(lstGenCarteModifica);
-
-            // LAB9: Populam ComboBox-ul cu lista de carti
             SeteazaComboBoxCarti();
+
+            // LAB10: legam lstCarti si lstAutori la colectii
+            lstCarti.ItemsSource = listaCarte;
+            lstAutori.ItemsSource = listaAutori;
         }
 
-        // =============================================
-        // LAB9: Metode de initializare controale
-        // =============================================
-
-        // Populeaza un ListBox cu toate valorile din enum-ul GenCarte
+        // codul tau original
         private void SeteazaListBoxGen(System.Windows.Controls.ListBox listBox)
         {
             listBox.ItemsSource = null;
             listBox.ItemsSource = Enum.GetValues(typeof(GenCarte));
         }
 
-        // Populeaza ComboBox-ul cu lista de carti
         private void SeteazaComboBoxCarti()
         {
             cmbCarti.ItemsSource = null;
@@ -55,9 +62,8 @@ namespace NivelUIWPF
         }
 
         // =============================================
-        // Meniu: Adauga / Modifica
+        // Meniu
         // =============================================
-
         private void MenuAdauga_Click(object sender, RoutedEventArgs e)
         {
             panelAdauga.Visibility = Visibility.Visible;
@@ -72,10 +78,15 @@ namespace NivelUIWPF
             radioEditeaza.IsChecked = true;
         }
 
-        // =============================================
-        // CERINTA 2: Handleri RadioButton
-        // =============================================
+        // LAB10: meniu autori
+        private void MenuAutori_Click(object sender, RoutedEventArgs e)
+        {
+            panelAutori.Visibility = Visibility.Visible;
+        }
 
+        // =============================================
+        // RadioButton — codul tau original
+        // =============================================
         private void RadioAdauga_Checked(object sender, RoutedEventArgs e)
         {
             if (panelAdauga != null)
@@ -95,52 +106,108 @@ namespace NivelUIWPF
         }
 
         // =============================================
-        // LAB9: SelectionChanged pentru ListBox Gen (Adaugare)
+        // LAB10: SelectionChanged ListBox Carti
         // =============================================
-
-        private void lstGenCarte_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void lstCarti_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            // Genul selectat va fi preluat la adaugare
-            // (nu e nevoie de actiune vizuala suplimentara)
+            // nu e nevoie de actiune suplimentara
         }
 
         // =============================================
-        // LAB9: SelectionChanged pentru ComboBox Carti (Modificare)
-        // Precompleteaza campurile cu datele cartii selectate
+        // LAB10: CRUD AUTOR
         // =============================================
+
+        // CREATE
+        private void AdaugaAutor_Click(object sender, RoutedEventArgs e)
+        {
+            string nume = txtNumeAutor.Text.Trim();
+            if (string.IsNullOrWhiteSpace(nume))
+            {
+                MessageBox.Show("Introduceți un nume valid!", "Eroare",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            // ObservableCollection notifica lstAutori automat
+            listaAutori.Add(new Autor(nextIdAutor++, nume));
+            txtMesajAutor.Text = $"✔ Autorul \"{nume}\" a fost adăugat!";
+            txtNumeAutor.Clear();
+        }
+
+        // UPDATE
+        private void ModificaAutor_Click(object sender, RoutedEventArgs e)
+        {
+            Autor autorSelectat = lstAutori.SelectedItem as Autor;
+            string numeNou = txtNumeAutor.Text.Trim();
+
+            if (autorSelectat == null || string.IsNullOrWhiteSpace(numeNou))
+            {
+                MessageBox.Show("Selectați un autor și introduceți un nume valid!", "Eroare",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            int index = listaAutori.IndexOf(autorSelectat);
+            autorSelectat.Nume = numeNou;
+            // Fortam refresh ObservableCollection
+            listaAutori.RemoveAt(index);
+            listaAutori.Insert(index, autorSelectat);
+
+            txtMesajAutor.Text = $"✔ Autorul a fost modificat în \"{numeNou}\"!";
+        }
+
+        // DELETE
+        private void StergeAutor_Click(object sender, RoutedEventArgs e)
+        {
+            Autor autorSelectat = lstAutori.SelectedItem as Autor;
+            if (autorSelectat == null)
+            {
+                MessageBox.Show("Selectați un autor din listă!", "Eroare",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var rezultat = MessageBox.Show(
+                $"Sigur vreți să ștergeți autorul \"{autorSelectat.Nume}\"?",
+                "Confirmare", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (rezultat == MessageBoxResult.Yes)
+            {
+                string nume = autorSelectat.Nume;
+                listaAutori.Remove(autorSelectat); // lstAutori se actualizeaza automat
+                txtMesajAutor.Text = $"✔ Autorul \"{nume}\" a fost șters!";
+                txtNumeAutor.Clear();
+            }
+        }
+
+        // SelectionChanged lstAutori — precompletam campul
+        private void lstAutori_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (lstAutori.SelectedItem is Autor autorSelectat)
+            {
+                txtNumeAutor.Text = autorSelectat.Nume;
+                txtMesajAutor.Text = "";
+            }
+        }
+
+        // =============================================
+        // codul tau original — neschimbat
+        // =============================================
+        private void lstGenCarte_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) { }
+        private void lstGenCarteModifica_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) { }
 
         private void cmbCarti_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Carte carteSelectata = cmbCarti.SelectedItem as Carte;
             if (carteSelectata != null)
             {
-                // Precompletam campurile cu datele cartii selectate
                 txtTitluModifica.Text = carteSelectata.Titlu;
                 txtAutorModifica.Text = carteSelectata.Autor.Nume;
                 txtNrExemplareModifica.Text = carteSelectata.NumarExemplare.ToString();
-
-                // LAB9: Setam data actualizarii la data curenta (read-only)
                 dtpDataActualizare.SelectedDate = DateTime.Today;
-
-                // LAB9: Selectam genul curent in ListBox
                 lstGenCarteModifica.SelectedItem = carteSelectata.Gen;
-
                 txtMesajModifica.Text = "";
             }
         }
-
-        // =============================================
-        // LAB9: SelectionChanged pentru ListBox Gen (Modificare)
-        // =============================================
-
-        private void lstGenCarteModifica_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            // Genul selectat va fi preluat la actualizare
-        }
-
-        // =============================================
-        // LAB9: Buton Actualizează — Modificare carte
-        // =============================================
 
         private void ActualizeazaCarte_Click(object sender, RoutedEventArgs e)
         {
@@ -169,29 +236,17 @@ namespace NivelUIWPF
                 return;
             }
 
-            // Aplicam modificarile pe obiectul din lista
             carteSelectata.Titlu = txtTitluModifica.Text;
             carteSelectata.Autor.Nume = txtAutorModifica.Text;
             carteSelectata.NumarExemplare = nrExemplare;
 
-            // LAB9: Preluam genul selectat din ListBox
             if (lstGenCarteModifica.SelectedItem != null)
-            {
                 carteSelectata.Gen = (GenCarte)lstGenCarteModifica.SelectedItem;
-            }
 
-            // LAB9: Actualizam data modificarii
             dtpDataActualizare.SelectedDate = DateTime.Today;
-
-            // Reimprospatam ComboBox-ul
             SeteazaComboBoxCarti();
-
             txtMesajModifica.Text = $"✔ Cartea \"{carteSelectata.Titlu}\" a fost actualizată cu succes!";
         }
-
-        // =============================================
-        // CODUL ORIGINAL — Adaugare carte
-        // =============================================
 
         private void AdaugaCarte_Click(object sender, RoutedEventArgs e)
         {
@@ -200,39 +255,27 @@ namespace NivelUIWPF
             int nrExemplare;
             bool valid = true;
 
-            // VALIDARE TITLU
             if (string.IsNullOrEmpty(titlu))
             {
                 txtTitlu.Background = Brushes.LightCoral;
                 valid = false;
             }
-            else
-            {
-                txtTitlu.Background = Brushes.White;
-            }
+            else { txtTitlu.Background = Brushes.White; }
 
-            // VALIDARE AUTOR
             if (string.IsNullOrEmpty(autor))
             {
                 txtAutor.Background = Brushes.LightCoral;
                 valid = false;
             }
-            else
-            {
-                txtAutor.Background = Brushes.White;
-            }
+            else { txtAutor.Background = Brushes.White; }
 
-            // VALIDARE NR EXEMPLARE
             if (!int.TryParse(txtNrExemplare.Text, out nrExemplare))
             {
                 txtNrExemplare.Background = Brushes.LightCoral;
                 MessageBox.Show("Număr exemplare invalid!");
                 return;
             }
-            else
-            {
-                txtNrExemplare.Background = Brushes.White;
-            }
+            else { txtNrExemplare.Background = Brushes.White; }
 
             if (nrExemplare <= 0)
             {
@@ -246,15 +289,12 @@ namespace NivelUIWPF
                 return;
             }
 
-            // LAB9: Preluam genul selectat din ListBox
             GenCarte genSelectat = GenCarte.Roman;
             if (lstGenCarte.SelectedItem != null)
                 genSelectat = (GenCarte)lstGenCarte.SelectedItem;
 
-            // LAB9: Preluam data achizitiei din DatePicker
             DateTime dataAchizitie = dtpDataAchizitie.SelectedDate ?? DateTime.Today;
 
-            // Adaugam cartea in lista
             Autor autorNou = new Autor(listaCarte.Count + 1, autor);
             Carte carteNoua = new Carte(listaCarte.Count + 1, titlu, autorNou, nrExemplare, genSelectat);
             listaCarte.Add(carteNoua);
@@ -263,28 +303,16 @@ namespace NivelUIWPF
             MessageBox.Show($"Carte adăugată: {titlu} - {autor} ({nrExemplare} exemplare)\nGen: {genSelectat}\nData achiziției: {dataAchizitie:dd.MM.yyyy}");
         }
 
-        // =============================================
-        // CODUL ORIGINAL — Cautare
-        // =============================================
-
         private void Cauta_Click(object sender, RoutedEventArgs e)
         {
             string cautare = txtCautare.Text;
             string termen = txtCautare.Text.ToLower();
 
             if (cautare == "Moromeții")
-            {
                 MessageBox.Show("Carte găsită!");
-            }
             else
-            {
                 MessageBox.Show("Nu există!");
-            }
         }
-
-        // =============================================
-        // Meniu File > Exit
-        // =============================================
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

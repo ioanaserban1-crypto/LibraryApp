@@ -1,11 +1,10 @@
 ﻿<Window x:Class="NivelUIWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Library App" Height="600" Width="800"
-        MinWidth="600" MinHeight="500">
+        Title="Library App" Height="650" Width="900"
+        MinWidth="700" MinHeight="500">
 
     <Window.Resources>
-        <!-- BONUS: Stiluri comune -->
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
         </Style>
@@ -26,14 +25,13 @@
         </Style>
     </Window.Resources>
 
-    <!-- Grid principal: rand 0 = Meniu, rand 1 = Continut -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- CERINTA 1: Meniu complet -->
+        <!-- MENIU -->
         <Menu Grid.Row="0">
             <MenuItem Header="Cărți">
                 <MenuItem Header="Adaugă carte" Click="MenuAdauga_Click"/>
@@ -42,8 +40,7 @@
                 <MenuItem Header="Șterge carte"/>
             </MenuItem>
             <MenuItem Header="Autori">
-                <MenuItem Header="Adaugă autor"/>
-                <MenuItem Header="Listă autori"/>
+                <MenuItem Header="Gestionare autori" Click="MenuAutori_Click"/>
             </MenuItem>
             <MenuItem Header="Împrumuturi">
                 <MenuItem Header="Împrumută carte"/>
@@ -54,37 +51,88 @@
             </MenuItem>
         </Menu>
 
-        <!-- Continut in ScrollViewer -->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="303*"/>
-                    <ColumnDefinition Width="460*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- ===== COLOANA STANGA: Detalii carte ===== -->
-                <StackPanel Grid.Column="0" Margin="5,5,98,5">
+                <!-- ===== COLOANA STANGA ===== -->
+                <StackPanel Grid.Column="0" Margin="5">
+
+                    <!-- LAB10: Binding OneWay — afisare detalii carte -->
                     <TextBlock Text="Detalii carte"
                                FontSize="18" FontWeight="Bold"
                                Margin="0,0,0,10"/>
 
                     <Label Content="Titlu:"/>
-                    <TextBlock Text="{Binding CarteCurenta.Titlu}" Margin="5"/>
+                    <TextBlock Text="{Binding CarteCurenta.Titlu, Mode=OneWay}" Margin="5"/>
 
                     <Label Content="Autor:"/>
-                    <TextBlock Text="{Binding CarteCurenta.Autor.Nume}" Margin="5"/>
+                    <TextBlock Text="{Binding CarteCurenta.Autor.Nume, Mode=OneWay}" Margin="5"/>
 
                     <Label Content="Număr exemplare:"/>
-                    <TextBlock Text="{Binding CarteCurenta.NumarExemplare}" Margin="5"/>
+                    <TextBlock Text="{Binding CarteCurenta.NumarExemplare, Mode=OneWay}" Margin="5"/>
 
                     <Label Content="Gen:"/>
-                    <TextBlock Text="{Binding CarteCurenta.Gen}" Margin="5"/>
+                    <TextBlock Text="{Binding CarteCurenta.Gen, Mode=OneWay}" Margin="5"/>
+
+                    <!-- Lista carti -->
+                    <Label Content="Listă cărți:"/>
+                    <ListBox x:Name="lstCarti"
+                             Margin="5"
+                             Height="130"
+                             DisplayMemberPath="Titlu"
+                             SelectionChanged="lstCarti_SelectionChanged"/>
+
+                    <!-- LAB10: Binding ElementName — numar carti -->
+                    <Label Content="{Binding ElementName=lstCarti,
+                                             Path=Items.Count,
+                                             StringFormat='Total cărți: {0}'}"
+                           Foreground="DarkBlue"/>
+
+                    <!-- ===== SECTIUNEA AUTORI — CRUD (LAB10) ===== -->
+                    <StackPanel x:Name="panelAutori" Visibility="Collapsed">
+                        <TextBlock Text="Gestionare Autori"
+                                   FontSize="18" FontWeight="Bold"
+                                   Margin="0,15,0,10"/>
+
+                        <Label Content="Nume autor:"/>
+                        <TextBox x:Name="txtNumeAutor" Margin="5"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Adaugă" Click="AdaugaAutor_Click"/>
+                            <Button Content="Modifică" Click="ModificaAutor_Click"/>
+                            <Button Content="Șterge"
+                                    Click="StergeAutor_Click"
+                                    Background="DarkRed"/>
+                        </StackPanel>
+
+                        <Label Content="Listă autori:"/>
+                        <ListBox x:Name="lstAutori"
+                                 Margin="5"
+                                 Height="120"
+                                 DisplayMemberPath="Nume"
+                                 SelectionChanged="lstAutori_SelectionChanged"/>
+
+                        <!-- LAB10: Binding ElementName — numar autori -->
+                        <Label Content="{Binding ElementName=lstAutori,
+                                                 Path=Items.Count,
+                                                 StringFormat='Total autori: {0}'}"
+                               Foreground="DarkBlue"/>
+
+                        <TextBlock x:Name="txtMesajAutor"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
                 </StackPanel>
 
-                <!-- ===== COLOANA DREAPTA: Formular ===== -->
-                <StackPanel Margin="4,5,5,5" Grid.Column="1">
+                <!-- ===== COLOANA DREAPTA ===== -->
+                <StackPanel Grid.Column="1" Margin="5">
 
-                    <!-- RadioButton pentru selectia operatiei -->
                     <TextBlock Text="Tip operație"
                                FontSize="16" FontWeight="Bold"
                                Margin="0,0,0,5"/>
@@ -106,10 +154,10 @@
                               Margin="5"
                               IsChecked="True"/>
 
-                    <!-- ===== SECTIUNEA ADAUGARE ===== -->
+                    <!-- SECTIUNEA ADAUGARE -->
                     <StackPanel x:Name="panelAdauga">
-                        <TextBlock Text="Adaugă carte"
-                                   x:Name="txtTitluFormular"
+                        <TextBlock x:Name="txtTitluFormular"
+                                   Text="Adaugă carte"
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0,10,0,5"/>
 
@@ -122,13 +170,11 @@
                         <Label Content="Număr exemplare:"/>
                         <TextBox x:Name="txtNrExemplare"/>
 
-                        <!-- LAB9: DatePicker pentru data achizitiei -->
                         <Label Content="Data achiziției:"/>
                         <DatePicker x:Name="dtpDataAchizitie"
                                     Margin="5"
                                     SelectedDateFormat="Short"/>
 
-                        <!-- LAB9: ListBox pentru GenCarte -->
                         <Label Content="Gen carte (selectați din listă):"/>
                         <ListBox x:Name="lstGenCarte"
                                  Margin="5"
@@ -142,13 +188,12 @@
                                 HorizontalAlignment="Left"/>
                     </StackPanel>
 
-                    <!-- ===== SECTIUNEA MODIFICARE (LAB9) ===== -->
+                    <!-- SECTIUNEA MODIFICARE -->
                     <StackPanel x:Name="panelModifica" Visibility="Collapsed">
                         <TextBlock Text="Modifică carte"
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0,10,0,5"/>
 
-                        <!-- LAB9: ComboBox cu lista de carti -->
                         <Label Content="Selectați cartea de modificat:"/>
                         <ComboBox x:Name="cmbCarti"
                                   Margin="5"
@@ -165,14 +210,12 @@
                         <Label Content="Număr exemplare:"/>
                         <TextBox x:Name="txtNrExemplareModifica"/>
 
-                        <!-- LAB9: DatePicker pentru data actualizarii -->
                         <Label Content="Data actualizării:"/>
                         <DatePicker x:Name="dtpDataActualizare"
                                     Margin="5"
                                     SelectedDateFormat="Short"
                                     IsEnabled="False"/>
 
-                        <!-- LAB9: ListBox pentru modificare gen -->
                         <Label Content="Gen carte:"/>
                         <ListBox x:Name="lstGenCarteModifica"
                                  Margin="5"
@@ -190,7 +233,7 @@
                                    TextWrapping="Wrap"/>
                     </StackPanel>
 
-                    <!-- ===== CAUTARE ===== -->
+                    <!-- CAUTARE -->
                     <TextBlock Text="Căutare carte"
                                FontSize="16" FontWeight="Bold"
                                Margin="0,15,0,5"/>
