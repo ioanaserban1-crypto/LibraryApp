@@ -2,6 +2,6 @@
 {
     public static class Configurari
     {
-        public static int LimitaCarti = 3;
+        public const int LIMITA_CARTI_IMPRUMUTATE = 3;
     }
 }

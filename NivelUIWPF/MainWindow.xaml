@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NivelUIWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Library App" Height="650" Width="900"
+        Title="Library App" Height="700" Width="1000"
         MinWidth="700" MinHeight="500">
 
     <Window.Resources>
@@ -34,7 +34,7 @@
         <!-- MENIU -->
         <Menu Grid.Row="0">
             <MenuItem Header="Cărți">
-                <MenuItem Header="Adaugă carte" Click="MenuAdauga_Click"/>
+                <MenuItem Header="Adaugă carte"  Click="MenuAdauga_Click"/>
                 <MenuItem Header="Modifică carte" Click="MenuModifica_Click"/>
                 <Separator/>
                 <MenuItem Header="Șterge carte"/>
@@ -42,9 +42,14 @@
             <MenuItem Header="Autori">
                 <MenuItem Header="Gestionare autori" Click="MenuAutori_Click"/>
             </MenuItem>
+            <MenuItem Header="Persoane">
+                <MenuItem Header="Gestionare persoane" Click="MenuPersoane_Click"/>
+            </MenuItem>
             <MenuItem Header="Împrumuturi">
-                <MenuItem Header="Împrumută carte"/>
-                <MenuItem Header="Returnează carte"/>
+                <MenuItem Header="Împrumută carte"   Click="MenuImprumuta_Click"/>
+                <MenuItem Header="Returnează carte"  Click="MenuReturneaza_Click"/>
+                <Separator/>
+                <MenuItem Header="Vezi împrumuturi active" Click="MenuVeziImprumuturi_Click"/>
             </MenuItem>
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="Exit_Click"/>
@@ -61,20 +66,17 @@
                 <!-- ===== COLOANA STANGA ===== -->
                 <StackPanel Grid.Column="0" Margin="5">
 
-                    <!-- LAB10: Binding OneWay — afisare detalii carte -->
+                    <!-- Detalii carte (Binding OneWay) -->
                     <TextBlock Text="Detalii carte"
                                FontSize="18" FontWeight="Bold"
                                Margin="0,0,0,10"/>
 
                     <Label Content="Titlu:"/>
                     <TextBlock Text="{Binding CarteCurenta.Titlu, Mode=OneWay}" Margin="5"/>
-
                     <Label Content="Autor:"/>
                     <TextBlock Text="{Binding CarteCurenta.Autor.Nume, Mode=OneWay}" Margin="5"/>
-
                     <Label Content="Număr exemplare:"/>
                     <TextBlock Text="{Binding CarteCurenta.NumarExemplare, Mode=OneWay}" Margin="5"/>
-
                     <Label Content="Gen:"/>
                     <TextBlock Text="{Binding CarteCurenta.Gen, Mode=OneWay}" Margin="5"/>
 
@@ -86,13 +88,13 @@
                              DisplayMemberPath="Titlu"
                              SelectionChanged="lstCarti_SelectionChanged"/>
 
-                    <!-- LAB10: Binding ElementName — numar carti -->
+                    <!-- Binding ElementName — numar carti -->
                     <Label Content="{Binding ElementName=lstCarti,
                                              Path=Items.Count,
                                              StringFormat='Total cărți: {0}'}"
                            Foreground="DarkBlue"/>
 
-                    <!-- ===== SECTIUNEA AUTORI — CRUD (LAB10) ===== -->
+                    <!-- ===== SECTIUNEA AUTORI ===== -->
                     <StackPanel x:Name="panelAutori" Visibility="Collapsed">
                         <TextBlock Text="Gestionare Autori"
                                    FontSize="18" FontWeight="Bold"
@@ -102,7 +104,7 @@
                         <TextBox x:Name="txtNumeAutor" Margin="5"/>
 
                         <StackPanel Orientation="Horizontal">
-                            <Button Content="Adaugă" Click="AdaugaAutor_Click"/>
+                            <Button Content="Adaugă"  Click="AdaugaAutor_Click"/>
                             <Button Content="Modifică" Click="ModificaAutor_Click"/>
                             <Button Content="Șterge"
                                     Click="StergeAutor_Click"
@@ -116,13 +118,98 @@
                                  DisplayMemberPath="Nume"
                                  SelectionChanged="lstAutori_SelectionChanged"/>
 
-                        <!-- LAB10: Binding ElementName — numar autori -->
                         <Label Content="{Binding ElementName=lstAutori,
                                                  Path=Items.Count,
                                                  StringFormat='Total autori: {0}'}"
                                Foreground="DarkBlue"/>
 
                         <TextBlock x:Name="txtMesajAutor"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- ===== SECTIUNEA PERSOANE (CRUD) ===== -->
+                    <StackPanel x:Name="panelPersoane" Visibility="Collapsed">
+                        <TextBlock Text="Gestionare Persoane"
+                                   FontSize="18" FontWeight="Bold"
+                                   Margin="0,15,0,10"/>
+
+                        <Label Content="Nume persoană:"/>
+                        <TextBox x:Name="txtNumePersoana" Margin="5"/>
+
+                        <!-- Eroare validare persoana (Lab 7) -->
+                        <TextBlock x:Name="lblEroarePersoana"
+                                   Foreground="Red"
+                                   Margin="5,0,5,5"
+                                   Visibility="Collapsed"
+                                   TextWrapping="Wrap"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Adaugă"  Click="AdaugaPersoana_Click"/>
+                            <Button Content="Modifică" Click="ModificaPersoana_Click"/>
+                            <Button Content="Șterge"
+                                    Click="StergePersoana_Click"
+                                    Background="DarkRed"/>
+                            <Button Content="Reset"
+                                    Click="ResetPersoana_Click"
+                                    Background="Gray"/>
+                        </StackPanel>
+
+                        <Label Content="Listă persoane:"/>
+                        <ListBox x:Name="lstPersoane"
+                                 Margin="5"
+                                 Height="120"
+                                 DisplayMemberPath="Nume"
+                                 SelectionChanged="lstPersoane_SelectionChanged"/>
+
+                        <Label Content="{Binding ElementName=lstPersoane,
+                                                 Path=Items.Count,
+                                                 StringFormat='Total persoane: {0}'}"
+                               Foreground="DarkBlue"/>
+
+                        <TextBlock x:Name="txtMesajPersoana"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- ===== SECTIUNEA IMPRUMUTURI ACTIVE ===== -->
+                    <StackPanel x:Name="panelImprumuturi" Visibility="Collapsed">
+                        <TextBlock Text="Împrumuturi active"
+                                   FontSize="18" FontWeight="Bold"
+                                   Margin="0,15,0,10"/>
+
+                        <!-- DataGrid pentru lista imprumuturi active -->
+                        <DataGrid x:Name="dgImprumuturi"
+                                  Margin="5"
+                                  Height="160"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  HeadersVisibility="Column"
+                                  SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Persoană"
+                                                   Binding="{Binding Persoana.Nume}"
+                                                   Width="*"/>
+                                <DataGridTextColumn Header="Carte"
+                                                   Binding="{Binding Carte.Titlu}"
+                                                   Width="*"/>
+                                <DataGridTextColumn Header="Data împrumut"
+                                                   Binding="{Binding DataImprumut, StringFormat=dd.MM.yyyy}"
+                                                   Width="110"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- Returnare carte selectata din DataGrid -->
+                        <Button Content="Returnează cartea selectată"
+                                Click="ReturneazaSelectata_Click"
+                                HorizontalAlignment="Left"
+                                Background="DarkGreen"/>
+
+                        <TextBlock x:Name="txtMesajReturnare"
                                    Foreground="DarkGreen"
                                    Margin="5"
                                    TextWrapping="Wrap"/>
@@ -154,7 +241,7 @@
                               Margin="5"
                               IsChecked="True"/>
 
-                    <!-- SECTIUNEA ADAUGARE -->
+                    <!-- SECTIUNEA ADAUGARE CARTE -->
                     <StackPanel x:Name="panelAdauga">
                         <TextBlock x:Name="txtTitluFormular"
                                    Text="Adaugă carte"
@@ -188,7 +275,7 @@
                                 HorizontalAlignment="Left"/>
                     </StackPanel>
 
-                    <!-- SECTIUNEA MODIFICARE -->
+                    <!-- SECTIUNEA MODIFICARE CARTE -->
                     <StackPanel x:Name="panelModifica" Visibility="Collapsed">
                         <TextBlock Text="Modifică carte"
                                    FontSize="16" FontWeight="Bold"
@@ -219,7 +306,7 @@
                         <Label Content="Gen carte:"/>
                         <ListBox x:Name="lstGenCarteModifica"
                                  Margin="5"
-                                 Height="110"
+                                 Height="80"
                                  SelectionMode="Single"
                                  SelectionChanged="lstGenCarteModifica_SelectionChanged"/>
 
@@ -228,6 +315,95 @@
                                 HorizontalAlignment="Left"/>
 
                         <TextBlock x:Name="txtMesajModifica"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- ===== SECTIUNEA IMPRUMUT CARTE ===== -->
+                    <StackPanel x:Name="panelImprumuta" Visibility="Collapsed">
+                        <TextBlock Text="Împrumută carte"
+                                   FontSize="16" FontWeight="Bold"
+                                   Margin="0,10,0,5"/>
+
+                        <!-- Selectie persoana -->
+                        <Label Content="Selectați persoana:"/>
+                        <ComboBox x:Name="cmbPersoaneImprumut"
+                                  Margin="5"
+                                  Height="30"
+                                  DisplayMemberPath="Nume"
+                                  SelectionChanged="cmbPersoaneImprumut_SelectionChanged"/>
+
+                        <!-- Mesaj limita imprumuturi — apare cu rosu cand e depasita -->
+                        <TextBlock x:Name="txtAvertismentLimita"
+                                   Foreground="Red"
+                                   FontWeight="Bold"
+                                   Margin="5"
+                                   TextWrapping="Wrap"
+                                   Visibility="Collapsed"/>
+
+                        <!-- Info carti imprumutate curent de persoana selectata -->
+                        <TextBlock x:Name="txtInfoCartiPersoana"
+                                   Foreground="DarkBlue"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+
+                        <!-- Selectie carte -->
+                        <Label Content="Selectați cartea:"/>
+                        <ComboBox x:Name="cmbCartiImprumut"
+                                  Margin="5"
+                                  Height="30"
+                                  DisplayMemberPath="Titlu"
+                                  SelectionChanged="cmbCartiImprumut_SelectionChanged"/>
+
+                        <!-- Info disponibilitate carte selectata -->
+                        <TextBlock x:Name="txtInfoDisponibilitateCarte"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+
+                        <Label Content="Data împrumutului:"/>
+                        <DatePicker x:Name="dtpDataImprumut"
+                                    Margin="5"
+                                    SelectedDateFormat="Short"/>
+
+                        <!-- Butonul e dezactivat automat daca limita e depasita -->
+                        <Button x:Name="btnImprumuta"
+                                Content="Confirmă împrumutul"
+                                Click="ConfirmaImprumut_Click"
+                                Background="DarkGreen"
+                                HorizontalAlignment="Left"/>
+
+                        <TextBlock x:Name="txtMesajImprumut"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- ===== SECTIUNEA RETURNARE CARTE ===== -->
+                    <StackPanel x:Name="panelReturneaza" Visibility="Collapsed">
+                        <TextBlock Text="Returnează carte"
+                                   FontSize="16" FontWeight="Bold"
+                                   Margin="0,10,0,5"/>
+
+                        <Label Content="Selectați persoana:"/>
+                        <ComboBox x:Name="cmbPersoaneReturnare"
+                                  Margin="5"
+                                  Height="30"
+                                  DisplayMemberPath="Nume"
+                                  SelectionChanged="cmbPersoaneReturnare_SelectionChanged"/>
+
+                        <Label Content="Selectați împrumutul de returnat:"/>
+                        <ComboBox x:Name="cmbImprumuturiReturnare"
+                                  Margin="5"
+                                  Height="30"
+                                  DisplayMemberPath="Carte.Titlu"/>
+
+                        <Button Content="Confirmă returnarea"
+                                Click="ConfirmaReturnare_Click"
+                                Background="DarkGreen"
+                                HorizontalAlignment="Left"/>
+
+                        <TextBlock x:Name="txtMesajReturnare2"
                                    Foreground="DarkGreen"
                                    Margin="5"
                                    TextWrapping="Wrap"/>

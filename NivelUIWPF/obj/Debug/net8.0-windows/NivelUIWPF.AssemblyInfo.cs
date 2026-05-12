@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NivelUIWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d854dd422d0034b46b09ba165d431ef00f7bacf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3e9fde62b4a4451f14f9a66fd10c890157d11b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("NivelUIWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NivelUIWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

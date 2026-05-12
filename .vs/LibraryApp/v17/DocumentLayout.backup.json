@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6C3C13A5-4A98-4D33-BA8C-9E532E02B051}|LibraryApp\\LibraryApp.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\libraryapp\\config\\configurari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C3C13A5-4A98-4D33-BA8C-9E532E02B051}|LibraryApp\\LibraryApp.csproj|solutionrelative:libraryapp\\config\\configurari.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\constante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\constante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\nivelstocaredate\\administratorentitatememorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|solutionrelative:nivelstocaredate\\administratorentitatememorie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\nivelstocaredate\\stocarefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|solutionrelative:nivelstocaredate\\stocarefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\nivelstocaredate\\administratorfisiertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|solutionrelative:nivelstocaredate\\administratorfisiertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\nivelstocaredate\\istocaredate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA1EB0AE-0A8A-4927-9F31-396EA7EB8BBD}|NivelStocareDate\\NivelStocareDate.csproj|solutionrelative:nivelstocaredate\\istocaredate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\viewmodels\\carteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\viewmodels\\carteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|d:\\ioana\\uni\\anul2\\sem2\\piu\\libraryapp\\niveluiwpf\\viewmodels\\autorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B22C056-A3C3-432A-BD6A-CF5446C04040}|NivelUIWPF\\NivelUIWPF.csproj|solutionrelative:niveluiwpf\\viewmodels\\autorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +50,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Constante.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\Constante.cs",
+              "RelativeDocumentMoniker": "NivelUIWPF\\Constante.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\Constante.cs",
+              "RelativeToolTip": "NivelUIWPF\\Constante.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T19:54:37.3Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -27,6 +72,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Configurari.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\Config\\Configurari.cs",
+              "RelativeDocumentMoniker": "LibraryApp\\Config\\Configurari.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\Config\\Configurari.cs",
+              "RelativeToolTip": "LibraryApp\\Config\\Configurari.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T19:45:16.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdministratorEntitateMemorie.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\AdministratorEntitateMemorie.cs",
+              "RelativeDocumentMoniker": "NivelStocareDate\\AdministratorEntitateMemorie.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\AdministratorEntitateMemorie.cs",
+              "RelativeToolTip": "NivelStocareDate\\AdministratorEntitateMemorie.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAQwIEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T19:44:33.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StocareFactory.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\StocareFactory.cs",
+              "RelativeDocumentMoniker": "NivelStocareDate\\StocareFactory.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\StocareFactory.cs",
+              "RelativeToolTip": "NivelStocareDate\\StocareFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T19:42:54.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdministratorFisierText.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\AdministratorFisierText.cs",
+              "RelativeDocumentMoniker": "NivelStocareDate\\AdministratorFisierText.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\AdministratorFisierText.cs",
+              "RelativeToolTip": "NivelStocareDate\\AdministratorFisierText.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAswGkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T19:42:25.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "NivelUIWPF\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\MainWindow.xaml.cs",
+              "RelativeToolTip": "NivelUIWPF\\MainWindow.xaml.cs",
+              "ViewState": "AgIAALMCAAAAAAAAAAAkwAECAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T09:53:11.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\MainWindow.xaml",
               "RelativeDocumentMoniker": "NivelUIWPF\\MainWindow.xaml",
@@ -38,15 +148,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "NivelUIWPF\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\MainWindow.xaml.cs",
-              "RelativeToolTip": "NivelUIWPF\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAADwv64AAAA4AAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "IStocareDate.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\IStocareDate.cs",
+              "RelativeDocumentMoniker": "NivelStocareDate\\IStocareDate.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\IStocareDate.cs",
+              "RelativeToolTip": "NivelStocareDate\\IStocareDate.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAqwAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T09:53:11.341Z"
+              "WhenOpened": "2026-05-12T19:41:46.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CarteViewModel.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\ViewModels\\CarteViewModel.cs",
+              "RelativeDocumentMoniker": "NivelUIWPF\\ViewModels\\CarteViewModel.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\ViewModels\\CarteViewModel.cs",
+              "RelativeToolTip": "NivelUIWPF\\ViewModels\\CarteViewModel.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAqwDwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T09:43:06.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AutorViewModel.cs",
+              "DocumentMoniker": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\ViewModels\\AutorViewModel.cs",
+              "RelativeDocumentMoniker": "NivelUIWPF\\ViewModels\\AutorViewModel.cs",
+              "ToolTip": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\ViewModels\\AutorViewModel.cs",
+              "RelativeToolTip": "NivelUIWPF\\ViewModels\\AutorViewModel.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAqwGsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T09:42:43.489Z"
             }
           ]
         }

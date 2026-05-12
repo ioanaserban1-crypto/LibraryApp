@@ -61,7 +61,8 @@
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "LibrarieModele >= 1.0.0",
-      "LibraryApp >= 1.0.0"
+      "LibraryApp >= 1.0.0",
+      "NivelStocareDate >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -102,6 +103,9 @@
             },
             "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj": {
               "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj"
+            },
+            "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj": {
+              "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj"
             }
           }
         }
