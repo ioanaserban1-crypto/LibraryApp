@@ -1,0 +1,211 @@
+﻿<Window x:Class="NivelUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Library App" Height="600" Width="800"
+        MinWidth="600" MinHeight="500">
+
+    <Window.Resources>
+        <!-- BONUS: Stiluri comune -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="DarkBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,5,5,0"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- Grid principal: rand 0 = Meniu, rand 1 = Continut -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- CERINTA 1: Meniu complet -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Cărți">
+                <MenuItem Header="Adaugă carte" Click="MenuAdauga_Click"/>
+                <MenuItem Header="Modifică carte" Click="MenuModifica_Click"/>
+                <Separator/>
+                <MenuItem Header="Șterge carte"/>
+            </MenuItem>
+            <MenuItem Header="Autori">
+                <MenuItem Header="Adaugă autor"/>
+                <MenuItem Header="Listă autori"/>
+            </MenuItem>
+            <MenuItem Header="Împrumuturi">
+                <MenuItem Header="Împrumută carte"/>
+                <MenuItem Header="Returnează carte"/>
+            </MenuItem>
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Continut in ScrollViewer -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- ===== COLOANA STANGA: Detalii carte ===== -->
+                <StackPanel Grid.Column="0" Margin="5">
+                    <TextBlock Text="Detalii carte"
+                               FontSize="18" FontWeight="Bold"
+                               Margin="0,0,0,10"/>
+
+                    <Label Content="Titlu:"/>
+                    <TextBlock Text="{Binding CarteCurenta.Titlu}" Margin="5"/>
+
+                    <Label Content="Autor:"/>
+                    <TextBlock Text="{Binding CarteCurenta.Autor.Nume}" Margin="5"/>
+
+                    <Label Content="Număr exemplare:"/>
+                    <TextBlock Text="{Binding CarteCurenta.NumarExemplare}" Margin="5"/>
+
+                    <Label Content="Gen:"/>
+                    <TextBlock Text="{Binding CarteCurenta.Gen}" Margin="5"/>
+                </StackPanel>
+
+                <!-- ===== COLOANA DREAPTA: Formular ===== -->
+                <StackPanel Grid.Column="1" Margin="5">
+
+                    <!-- RadioButton pentru selectia operatiei -->
+                    <TextBlock Text="Tip operație"
+                               FontSize="16" FontWeight="Bold"
+                               Margin="0,0,0,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <RadioButton x:Name="radioAdauga"
+                                     Content="Carte nouă"
+                                     GroupName="Tip"
+                                     IsChecked="True"
+                                     Margin="5"
+                                     Checked="RadioAdauga_Checked"/>
+                        <RadioButton x:Name="radioEditeaza"
+                                     Content="Editare carte"
+                                     GroupName="Tip"
+                                     Margin="5"
+                                     Checked="RadioEditeaza_Checked"/>
+                    </StackPanel>
+                    <CheckBox x:Name="chkDisponibila"
+                              Content="Disponibilă pentru împrumut"
+                              Margin="5"
+                              IsChecked="True"/>
+
+                    <!-- ===== SECTIUNEA ADAUGARE ===== -->
+                    <StackPanel x:Name="panelAdauga">
+                        <TextBlock Text="Adaugă carte"
+                                   x:Name="txtTitluFormular"
+                                   FontSize="16" FontWeight="Bold"
+                                   Margin="0,10,0,5"/>
+
+                        <Label Content="Titlu carte:"/>
+                        <TextBox x:Name="txtTitlu"/>
+
+                        <Label Content="Autor:"/>
+                        <TextBox x:Name="txtAutor"/>
+
+                        <Label Content="Număr exemplare:"/>
+                        <TextBox x:Name="txtNrExemplare"/>
+
+                        <!-- LAB9: DatePicker pentru data achizitiei -->
+                        <Label Content="Data achiziției:"/>
+                        <DatePicker x:Name="dtpDataAchizitie"
+                                    Margin="5"
+                                    SelectedDateFormat="Short"/>
+
+                        <!-- LAB9: ListBox pentru GenCarte -->
+                        <Label Content="Gen carte (selectați din listă):"/>
+                        <ListBox x:Name="lstGenCarte"
+                                 Margin="5"
+                                 Height="110"
+                                 SelectionMode="Single"
+                                 SelectionChanged="lstGenCarte_SelectionChanged"/>
+
+                        <Button Content="Adaugă carte"
+                                x:Name="btnAdauga"
+                                Click="AdaugaCarte_Click"
+                                HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <!-- ===== SECTIUNEA MODIFICARE (LAB9) ===== -->
+                    <StackPanel x:Name="panelModifica" Visibility="Collapsed">
+                        <TextBlock Text="Modifică carte"
+                                   FontSize="16" FontWeight="Bold"
+                                   Margin="0,10,0,5"/>
+
+                        <!-- LAB9: ComboBox cu lista de carti -->
+                        <Label Content="Selectați cartea de modificat:"/>
+                        <ComboBox x:Name="cmbCarti"
+                                  Margin="5"
+                                  Height="30"
+                                  DisplayMemberPath="Titlu"
+                                  SelectionChanged="cmbCarti_SelectionChanged"/>
+
+                        <Label Content="Titlu carte:"/>
+                        <TextBox x:Name="txtTitluModifica"/>
+
+                        <Label Content="Autor:"/>
+                        <TextBox x:Name="txtAutorModifica"/>
+
+                        <Label Content="Număr exemplare:"/>
+                        <TextBox x:Name="txtNrExemplareModifica"/>
+
+                        <!-- LAB9: DatePicker pentru data actualizarii -->
+                        <Label Content="Data actualizării:"/>
+                        <DatePicker x:Name="dtpDataActualizare"
+                                    Margin="5"
+                                    SelectedDateFormat="Short"
+                                    IsEnabled="False"/>
+
+                        <!-- LAB9: ListBox pentru modificare gen -->
+                        <Label Content="Gen carte:"/>
+                        <ListBox x:Name="lstGenCarteModifica"
+                                 Margin="5"
+                                 Height="110"
+                                 SelectionMode="Single"
+                                 SelectionChanged="lstGenCarteModifica_SelectionChanged"/>
+
+                        <Button Content="Actualizează"
+                                Click="ActualizeazaCarte_Click"
+                                HorizontalAlignment="Left"/>
+
+                        <TextBlock x:Name="txtMesajModifica"
+                                   Foreground="DarkGreen"
+                                   Margin="5"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- ===== CAUTARE ===== -->
+                    <TextBlock Text="Căutare carte"
+                               FontSize="16" FontWeight="Bold"
+                               Margin="0,15,0,5"/>
+                    <Label Content="Caută după titlu:"/>
+                    <TextBox x:Name="txtCautare"/>
+                    <Button Content="Caută"
+                            Click="Cauta_Click"
+                            HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="txtRezultatCautare"
+                               Margin="5"
+                               Foreground="DarkGreen"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

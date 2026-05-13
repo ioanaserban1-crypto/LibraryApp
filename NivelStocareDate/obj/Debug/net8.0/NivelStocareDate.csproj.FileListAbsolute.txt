@@ -1,0 +1,16 @@
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.csproj.AssemblyReference.cache
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.GeneratedMSBuildEditorConfig.editorconfig
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.AssemblyInfoInputs.cache
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.AssemblyInfo.cs
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.csproj.CoreCompileInputs.cache
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.sourcelink.json
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\bin\Debug\net8.0\NivelStocareDate.deps.json
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\bin\Debug\net8.0\NivelStocareDate.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\bin\Debug\net8.0\NivelStocareDate.pdb
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\bin\Debug\net8.0\LibrarieModele.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\bin\Debug\net8.0\LibrarieModele.pdb
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelSto.ECC26E05.Up2Date
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\refint\NivelStocareDate.dll
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\NivelStocareDate.pdb
+D:\IOANA\UNI\ANUL2\SEM2\PIU\LibraryApp\NivelStocareDate\obj\Debug\net8.0\ref\NivelStocareDate.dll

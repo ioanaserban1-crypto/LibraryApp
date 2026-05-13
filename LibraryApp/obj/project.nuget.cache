@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "ke+yJFRwCrw=",
+  "dgSpecHash": "F/CMsCuDO08=",
   "success": true,
-  "projectFilePath": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
+  "projectFilePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
