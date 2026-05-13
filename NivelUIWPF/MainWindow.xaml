@@ -1,10 +1,18 @@
 ﻿<Window x:Class="NivelUIWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<<<<<<< HEAD
         Title="Library App" Height="700" Width="1000"
         MinWidth="700" MinHeight="500">
 
     <Window.Resources>
+=======
+        Title="Library App" Height="600" Width="800"
+        MinWidth="600" MinHeight="500">
+
+    <Window.Resources>
+        <!-- BONUS: Stiluri comune -->
+>>>>>>> salvare-commits
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
         </Style>
@@ -25,21 +33,33 @@
         </Style>
     </Window.Resources>
 
+<<<<<<< HEAD
+=======
+    <!-- Grid principal: rand 0 = Meniu, rand 1 = Continut -->
+>>>>>>> salvare-commits
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+<<<<<<< HEAD
         <!-- MENIU -->
         <Menu Grid.Row="0">
             <MenuItem Header="Cărți">
                 <MenuItem Header="Adaugă carte"  Click="MenuAdauga_Click"/>
+=======
+        <!-- CERINTA 1: Meniu complet -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Cărți">
+                <MenuItem Header="Adaugă carte" Click="MenuAdauga_Click"/>
+>>>>>>> salvare-commits
                 <MenuItem Header="Modifică carte" Click="MenuModifica_Click"/>
                 <Separator/>
                 <MenuItem Header="Șterge carte"/>
             </MenuItem>
             <MenuItem Header="Autori">
+<<<<<<< HEAD
                 <MenuItem Header="Gestionare autori" Click="MenuAutori_Click"/>
             </MenuItem>
             <MenuItem Header="Persoane">
@@ -50,12 +70,24 @@
                 <MenuItem Header="Returnează carte"  Click="MenuReturneaza_Click"/>
                 <Separator/>
                 <MenuItem Header="Vezi împrumuturi active" Click="MenuVeziImprumuturi_Click"/>
+=======
+                <MenuItem Header="Adaugă autor"/>
+                <MenuItem Header="Listă autori"/>
+            </MenuItem>
+            <MenuItem Header="Împrumuturi">
+                <MenuItem Header="Împrumută carte"/>
+                <MenuItem Header="Returnează carte"/>
+>>>>>>> salvare-commits
             </MenuItem>
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
 
+<<<<<<< HEAD
+=======
+        <!-- Continut in ScrollViewer -->
+>>>>>>> salvare-commits
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
@@ -63,15 +95,21 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+<<<<<<< HEAD
                 <!-- ===== COLOANA STANGA ===== -->
                 <StackPanel Grid.Column="0" Margin="5">
 
                     <!-- Detalii carte (Binding OneWay) -->
+=======
+                <!-- ===== COLOANA STANGA: Detalii carte ===== -->
+                <StackPanel Grid.Column="0" Margin="5">
+>>>>>>> salvare-commits
                     <TextBlock Text="Detalii carte"
                                FontSize="18" FontWeight="Bold"
                                Margin="0,0,0,10"/>
 
                     <Label Content="Titlu:"/>
+<<<<<<< HEAD
                     <TextBlock Text="{Binding CarteCurenta.Titlu, Mode=OneWay}" Margin="5"/>
                     <Label Content="Autor:"/>
                     <TextBlock Text="{Binding CarteCurenta.Autor.Nume, Mode=OneWay}" Margin="5"/>
@@ -220,6 +258,24 @@
                 <!-- ===== COLOANA DREAPTA ===== -->
                 <StackPanel Grid.Column="1" Margin="5">
 
+=======
+                    <TextBlock Text="{Binding CarteCurenta.Titlu}" Margin="5"/>
+
+                    <Label Content="Autor:"/>
+                    <TextBlock Text="{Binding CarteCurenta.Autor.Nume}" Margin="5"/>
+
+                    <Label Content="Număr exemplare:"/>
+                    <TextBlock Text="{Binding CarteCurenta.NumarExemplare}" Margin="5"/>
+
+                    <Label Content="Gen:"/>
+                    <TextBlock Text="{Binding CarteCurenta.Gen}" Margin="5"/>
+                </StackPanel>
+
+                <!-- ===== COLOANA DREAPTA: Formular ===== -->
+                <StackPanel Grid.Column="1" Margin="5">
+
+                    <!-- RadioButton pentru selectia operatiei -->
+>>>>>>> salvare-commits
                     <TextBlock Text="Tip operație"
                                FontSize="16" FontWeight="Bold"
                                Margin="0,0,0,5"/>
@@ -241,10 +297,17 @@
                               Margin="5"
                               IsChecked="True"/>
 
+<<<<<<< HEAD
                     <!-- SECTIUNEA ADAUGARE CARTE -->
                     <StackPanel x:Name="panelAdauga">
                         <TextBlock x:Name="txtTitluFormular"
                                    Text="Adaugă carte"
+=======
+                    <!-- ===== SECTIUNEA ADAUGARE ===== -->
+                    <StackPanel x:Name="panelAdauga">
+                        <TextBlock Text="Adaugă carte"
+                                   x:Name="txtTitluFormular"
+>>>>>>> salvare-commits
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0,10,0,5"/>
 
@@ -257,11 +320,19 @@
                         <Label Content="Număr exemplare:"/>
                         <TextBox x:Name="txtNrExemplare"/>
 
+<<<<<<< HEAD
+=======
+                        <!-- LAB9: DatePicker pentru data achizitiei -->
+>>>>>>> salvare-commits
                         <Label Content="Data achiziției:"/>
                         <DatePicker x:Name="dtpDataAchizitie"
                                     Margin="5"
                                     SelectedDateFormat="Short"/>
 
+<<<<<<< HEAD
+=======
+                        <!-- LAB9: ListBox pentru GenCarte -->
+>>>>>>> salvare-commits
                         <Label Content="Gen carte (selectați din listă):"/>
                         <ListBox x:Name="lstGenCarte"
                                  Margin="5"
@@ -275,12 +346,20 @@
                                 HorizontalAlignment="Left"/>
                     </StackPanel>
 
+<<<<<<< HEAD
                     <!-- SECTIUNEA MODIFICARE CARTE -->
+=======
+                    <!-- ===== SECTIUNEA MODIFICARE (LAB9) ===== -->
+>>>>>>> salvare-commits
                     <StackPanel x:Name="panelModifica" Visibility="Collapsed">
                         <TextBlock Text="Modifică carte"
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0,10,0,5"/>
 
+<<<<<<< HEAD
+=======
+                        <!-- LAB9: ComboBox cu lista de carti -->
+>>>>>>> salvare-commits
                         <Label Content="Selectați cartea de modificat:"/>
                         <ComboBox x:Name="cmbCarti"
                                   Margin="5"
@@ -297,16 +376,28 @@
                         <Label Content="Număr exemplare:"/>
                         <TextBox x:Name="txtNrExemplareModifica"/>
 
+<<<<<<< HEAD
+=======
+                        <!-- LAB9: DatePicker pentru data actualizarii -->
+>>>>>>> salvare-commits
                         <Label Content="Data actualizării:"/>
                         <DatePicker x:Name="dtpDataActualizare"
                                     Margin="5"
                                     SelectedDateFormat="Short"
                                     IsEnabled="False"/>
 
+<<<<<<< HEAD
                         <Label Content="Gen carte:"/>
                         <ListBox x:Name="lstGenCarteModifica"
                                  Margin="5"
                                  Height="80"
+=======
+                        <!-- LAB9: ListBox pentru modificare gen -->
+                        <Label Content="Gen carte:"/>
+                        <ListBox x:Name="lstGenCarteModifica"
+                                 Margin="5"
+                                 Height="110"
+>>>>>>> salvare-commits
                                  SelectionMode="Single"
                                  SelectionChanged="lstGenCarteModifica_SelectionChanged"/>
 
@@ -320,6 +411,7 @@
                                    TextWrapping="Wrap"/>
                     </StackPanel>
 
+<<<<<<< HEAD
                     <!-- ===== SECTIUNEA IMPRUMUT CARTE ===== -->
                     <StackPanel x:Name="panelImprumuta" Visibility="Collapsed">
                         <TextBlock Text="Împrumută carte"
@@ -410,6 +502,9 @@
                     </StackPanel>
 
                     <!-- CAUTARE -->
+=======
+                    <!-- ===== CAUTARE ===== -->
+>>>>>>> salvare-commits
                     <TextBlock Text="Căutare carte"
                                FontSize="16" FontWeight="Bold"
                                Margin="0,15,0,5"/>
@@ -427,4 +522,8 @@
             </Grid>
         </ScrollViewer>
     </Grid>
+<<<<<<< HEAD
 </Window>
+=======
+</Window>
+>>>>>>> salvare-commits

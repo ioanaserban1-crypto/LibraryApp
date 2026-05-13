@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "ccscIKZ/HpA=",
+=======
+  "dgSpecHash": "P91TtgTBv6I=",
+>>>>>>> salvare-commits
   "success": true,
   "projectFilePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\NivelUIWPF.csproj",
   "expectedPackageFiles": [],

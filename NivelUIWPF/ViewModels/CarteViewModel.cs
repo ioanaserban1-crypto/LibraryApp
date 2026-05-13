@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+=======
+﻿using LibrarieModele;
+>>>>>>> salvare-commits
 using LibrarieModele.Enums;
 using LibrarieModele.Models;
 
 namespace NivelUIWPF.ViewModels
 {
+<<<<<<< HEAD
     // LAB10: Implementam INotifyPropertyChanged pentru notificarea UI-ului
     public class CarteViewModel : INotifyPropertyChanged
     {
@@ -56,6 +61,24 @@ namespace NivelUIWPF.ViewModels
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+=======
+    public class CarteViewModel
+    {
+        public Carte CarteCurenta { get; set; }
+
+        public CarteViewModel()
+        {
+            Autor autor = new Autor(1, "Marin Preda");
+
+            CarteCurenta = new Carte(
+                1,                  // id
+                "Moromeții",        // titlu
+                autor,              // obiect Autor
+                10,                 // nr exemplare
+                GenCarte.Roman,     // enum
+                OptiuniCarte.Niciuna
+            );
+>>>>>>> salvare-commits
         }
     }
 }

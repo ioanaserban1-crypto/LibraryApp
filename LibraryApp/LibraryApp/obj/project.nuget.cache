@@ -1,0 +1,18 @@
+<<<<<<< HEAD:LibraryApp/LibraryApp/obj/project.nuget.cache
+{
+  "version": 2,
+  "dgSpecHash": "ke+yJFRwCrw=",
+  "success": true,
+  "projectFilePath": "D:\\IOANA\\UNI\\ANUL 2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+=======
+{
+  "version": 2,
+  "dgSpecHash": "f9t9QT+OOkQ=",
+  "success": true,
+  "projectFilePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+>>>>>>> e220a50 (Lab 8 & 9):LibrarieModele/obj/project.nuget.cache
+}

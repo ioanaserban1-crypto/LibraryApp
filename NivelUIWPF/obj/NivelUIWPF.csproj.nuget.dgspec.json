@@ -98,6 +98,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
+<<<<<<< HEAD
             "projectReferences": {
               "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj": {
                 "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj"
@@ -176,6 +177,9 @@
                 "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibrarieModele\\LibrarieModele.csproj"
               }
             }
+=======
+            "projectReferences": {}
+>>>>>>> salvare-commits
           }
         },
         "warningProperties": {
@@ -247,9 +251,12 @@
               },
               "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj": {
                 "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj"
+<<<<<<< HEAD
               },
               "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj": {
                 "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj"
+=======
+>>>>>>> salvare-commits
               }
             }
           }

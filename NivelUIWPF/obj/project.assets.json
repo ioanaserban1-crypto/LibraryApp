@@ -15,16 +15,20 @@
       "LibraryApp/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+<<<<<<< HEAD
         "dependencies": {
           "LibrarieModele": "1.0.0",
           "NivelStocareDate": "1.0.0"
         },
+=======
+>>>>>>> salvare-commits
         "compile": {
           "bin/placeholder/LibraryApp.dll": {}
         },
         "runtime": {
           "bin/placeholder/LibraryApp.dll": {}
         }
+<<<<<<< HEAD
       },
       "NivelStocareDate/1.0.0": {
         "type": "project",
@@ -38,6 +42,8 @@
         "runtime": {
           "bin/placeholder/NivelStocareDate.dll": {}
         }
+=======
+>>>>>>> salvare-commits
       }
     }
   },
@@ -51,18 +57,25 @@
       "type": "project",
       "path": "../LibraryApp/LibraryApp.csproj",
       "msbuildProject": "../LibraryApp/LibraryApp.csproj"
+<<<<<<< HEAD
     },
     "NivelStocareDate/1.0.0": {
       "type": "project",
       "path": "../NivelStocareDate/NivelStocareDate.csproj",
       "msbuildProject": "../NivelStocareDate/NivelStocareDate.csproj"
+=======
+>>>>>>> salvare-commits
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "LibrarieModele >= 1.0.0",
+<<<<<<< HEAD
       "LibraryApp >= 1.0.0",
       "NivelStocareDate >= 1.0.0"
+=======
+      "LibraryApp >= 1.0.0"
+>>>>>>> salvare-commits
     ]
   },
   "packageFolders": {
@@ -103,9 +116,12 @@
             },
             "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj": {
               "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\LibraryApp\\LibraryApp.csproj"
+<<<<<<< HEAD
             },
             "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj": {
               "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelStocareDate\\NivelStocareDate.csproj"
+=======
+>>>>>>> salvare-commits
             }
           }
         }

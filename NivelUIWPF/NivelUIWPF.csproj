@@ -11,7 +11,10 @@
   <ItemGroup>
     <ProjectReference Include="..\LibrarieModele\LibrarieModele.csproj" />
     <ProjectReference Include="..\LibraryApp\LibraryApp.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\NivelStocareDate\NivelStocareDate.csproj" />
+=======
+>>>>>>> salvare-commits
   </ItemGroup>
 
 </Project>
