@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -7,14 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LibrarieModele\LibrarieModele.csproj" />
     <ProjectReference Include="..\LibraryApp\LibraryApp.csproj" />
-<<<<<<< HEAD
     <ProjectReference Include="..\NivelStocareDate\NivelStocareDate.csproj" />
-=======
->>>>>>> salvare-commits
   </ItemGroup>
-
 </Project>

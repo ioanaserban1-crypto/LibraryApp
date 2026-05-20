@@ -1,12 +1,18 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "ccscIKZ/HpA=",
-=======
-  "dgSpecHash": "P91TtgTBv6I=",
->>>>>>> salvare-commits
   "success": true,
   "projectFilePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\NivelUIWPF.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\NivelUIWPF.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\IOANA\\UNI\\ANUL2\\SEM2\\PIU\\LibraryApp\\NivelUIWPF\\NivelUIWPF.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

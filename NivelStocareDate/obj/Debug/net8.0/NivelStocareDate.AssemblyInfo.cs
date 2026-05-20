@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3e9fde62b4a4451f14f9a66fd10c890157d11b2")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25531384162b74ba7dc205d39233d358afb6c3ac")]
->>>>>>> salvare-commits
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16715b50ff7b3a794423f8308c18af01a36ba9af")]
 [assembly: System.Reflection.AssemblyProductAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NivelStocareDate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
