@@ -7,13 +7,12 @@ using System.Windows.Media;
 using NivelUIWPF.ViewModels;
 using LibrarieModele.Enums;
 using LibrarieModele.Models;
-using LibrarieModele.Models;
 
 namespace NivelUIWPF
 {
     public partial class MainWindow : Window
     {
-        private List<Carte> listaCarte = new List<Carte>();
+        private CarteViewModel carteVM;
         private ObservableCollection<Autor> listaAutori = new ObservableCollection<Autor>();
         private ObservableCollection<Persoana> listaPersoane = new ObservableCollection<Persoana>();
         private List<Imprumut> listaImprumuturi = new List<Imprumut>();
@@ -26,15 +25,14 @@ namespace NivelUIWPF
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new CarteViewModel();
+
+            // LAB11: MVVM — initializam ViewModel si setam DataContext
+            carteVM = new CarteViewModel();
+            DataContext = carteVM;
 
             Autor autor1 = new Autor(1, "Marin Preda");
             Autor autor2 = new Autor(2, "Mihai Eminescu");
             Autor autor3 = new Autor(3, "Ion Creanga");
-
-            listaCarte.Add(new Carte(1, "Morometii", autor1, 10, GenCarte.Roman));
-            listaCarte.Add(new Carte(2, "Luceafarul", autor2, 5, GenCarte.Poezie));
-            listaCarte.Add(new Carte(3, "Amintiri din copilarie", autor3, 8, GenCarte.Roman));
 
             listaAutori.Add(autor1);
             listaAutori.Add(autor2);
@@ -45,9 +43,11 @@ namespace NivelUIWPF
 
             SeteazaListBoxGen(lstGenCarte);
             SeteazaListBoxGen(lstGenCarteModifica);
-            SeteazaComboBoxCarti();
 
-            lstCarti.ItemsSource = listaCarte;
+            // Legam lstCarti la ObservableCollection din ViewModel
+            lstCarti.ItemsSource = carteVM.Carti;
+            cmbCarti.ItemsSource = carteVM.Carti;
+
             lstAutori.ItemsSource = listaAutori;
             lstPersoane.ItemsSource = listaPersoane;
 
@@ -67,7 +67,7 @@ namespace NivelUIWPF
         private void SeteazaComboBoxCarti()
         {
             cmbCarti.ItemsSource = null;
-            cmbCarti.ItemsSource = listaCarte;
+            cmbCarti.ItemsSource = carteVM.Carti;
         }
 
         private int GetNrCartiImprumutate(Persoana persoana)
@@ -131,7 +131,7 @@ namespace NivelUIWPF
             cmbPersoaneImprumut.ItemsSource = listaPersoane;
 
             cmbCartiImprumut.ItemsSource = null;
-            cmbCartiImprumut.ItemsSource = listaCarte.Where(c => c.EsteDisponibila()).ToList();
+            cmbCartiImprumut.ItemsSource = carteVM.Carti.Where(c => c.EsteDisponibila()).ToList();
 
             txtAvertismentLimita.Visibility = Visibility.Collapsed;
             txtInfoCartiPersoana.Text = "";
@@ -381,13 +381,12 @@ namespace NivelUIWPF
 
             int nrImprumutate = GetNrCartiImprumutate(persoana);
             txtInfoCartiPersoana.Text =
-                $"{persoana.Nume} are {nrImprumutate} / {3} carti imprumutate.";
+                $"{persoana.Nume} are {nrImprumutate} / 3 carti imprumutate.";
 
             if (!PoateFaceImprumut(persoana))
             {
                 txtAvertismentLimita.Text =
-                    $"ATENTIE! {persoana.Nume} a atins limita de " +
-                    $"{3} carti imprumutate.\n" +
+                    $"ATENTIE! {persoana.Nume} a atins limita de 3 carti imprumutate.\n" +
                     "Nu se permite imprumutarea unei alte carti!";
                 txtAvertismentLimita.Visibility = Visibility.Visible;
                 btnImprumuta.IsEnabled = false;
@@ -431,8 +430,7 @@ namespace NivelUIWPF
             if (!PoateFaceImprumut(persoana))
             {
                 MessageBox.Show(
-                    $"Imprumutul nu este permis!\n" +
-                    $"{persoana.Nume} a atins limita de {3} carti.",
+                    $"Imprumutul nu este permis!\n{persoana.Nume} a atins limita de 3 carti.",
                     "Imprumut blocat", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
@@ -451,22 +449,18 @@ namespace NivelUIWPF
             carte.ExemplareImprumutate++;
 
             txtMesajImprumut.Text =
-                $"Imprumut inregistrat!\n" +
-                $"Persoana: {persoana.Nume}\n" +
-                $"Carte: {carte.Titlu}\n" +
-                $"Data: {dataImprumut:dd.MM.yyyy}";
+                $"Imprumut inregistrat!\nPersoana: {persoana.Nume}\n" +
+                $"Carte: {carte.Titlu}\nData: {dataImprumut:dd.MM.yyyy}";
 
             cmbCartiImprumut.ItemsSource = null;
-            cmbCartiImprumut.ItemsSource = listaCarte.Where(c => c.EsteDisponibila()).ToList();
+            cmbCartiImprumut.ItemsSource = carteVM.Carti.Where(c => c.EsteDisponibila()).ToList();
 
             int nrNou = GetNrCartiImprumutate(persoana);
-            txtInfoCartiPersoana.Text =
-                $"{persoana.Nume} are acum {nrNou} / {3} carti imprumutate.";
+            txtInfoCartiPersoana.Text = $"{persoana.Nume} are acum {nrNou} / 3 carti imprumutate.";
 
             if (!PoateFaceImprumut(persoana))
             {
-                txtAvertismentLimita.Text =
-                    $"ATENTIE! {persoana.Nume} a atins limita maxima de {3} carti!";
+                txtAvertismentLimita.Text = $"ATENTIE! {persoana.Nume} a atins limita maxima de 3 carti!";
                 txtAvertismentLimita.Visibility = Visibility.Visible;
                 btnImprumuta.IsEnabled = false;
             }
@@ -489,8 +483,7 @@ namespace NivelUIWPF
             cmbImprumuturiReturnare.ItemsSource = imprumuturiActive;
 
             txtMesajReturnare2.Text = imprumuturiActive.Count == 0
-                ? $"{persoana.Nume} nu are imprumuturi active."
-                : "";
+                ? $"{persoana.Nume} nu are imprumuturi active." : "";
         }
 
         private void ConfirmaReturnare_Click(object sender, RoutedEventArgs e)
@@ -543,8 +536,7 @@ namespace NivelUIWPF
 
                 dgImprumuturi.ItemsSource = null;
                 dgImprumuturi.ItemsSource = listaImprumuturi
-                    .Where(i => i.DataReturnare == null)
-                    .ToList();
+                    .Where(i => i.DataReturnare == null).ToList();
 
                 txtMesajReturnare.Text =
                     $"Cartea \"{imprumutSelectat.Carte.Titlu}\" a fost returnata la " +
@@ -602,30 +594,18 @@ namespace NivelUIWPF
             txtMesajModifica.Text = $"Cartea \"{carteSelectata.Titlu}\" a fost actualizata!";
         }
 
+        // ============================================================
+        // LAB11: ADAUGARE CARTE — date din ViewModel prin Binding
+        // ============================================================
+
         private void AdaugaCarte_Click(object sender, RoutedEventArgs e)
         {
-            string titlu = txtTitlu.Text;
-            string autor = txtAutor.Text;
-            bool valid = true;
+            // LAB11: Datele vin din ViewModel prin Binding TwoWay
+            string titlu = carteVM.TitluNou;
+            string autor = carteVM.AutorNou;
 
-            if (string.IsNullOrEmpty(titlu))
-            { txtTitlu.Background = Brushes.LightCoral; valid = false; }
-            else { txtTitlu.Background = Brushes.White; }
-
-            if (string.IsNullOrEmpty(autor))
-            { txtAutor.Background = Brushes.LightCoral; valid = false; }
-            else { txtAutor.Background = Brushes.White; }
-
-            if (!int.TryParse(txtNrExemplare.Text, out int nrExemplare) || nrExemplare <= 0)
-            { txtNrExemplare.Background = Brushes.LightCoral; valid = false; }
-            else { txtNrExemplare.Background = Brushes.White; }
-
-            if (!valid)
-            {
-                MessageBox.Show("Completati corect toate campurile!", "Eroare",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (!int.TryParse(carteVM.NrExemplareNou, out int nrExemplare) || nrExemplare <= 0)
                 return;
-            }
 
             GenCarte genSelectat = lstGenCarte.SelectedItem != null
                 ? (GenCarte)lstGenCarte.SelectedItem : GenCarte.Roman;
@@ -634,17 +614,16 @@ namespace NivelUIWPF
 
             Autor autorNou = new Autor(nextIdAutor++, autor.Trim());
             Carte carteNoua = new Carte(nextIdCarte++, titlu.Trim(), autorNou, nrExemplare, genSelectat);
-            listaCarte.Add(carteNoua);
 
-            lstCarti.ItemsSource = null;
-            lstCarti.ItemsSource = listaCarte;
-            SeteazaComboBoxCarti();
+            // LAB10: ObservableCollection — lstCarti se actualizeaza automat
+            carteVM.Carti.Add(carteNoua);
 
             MessageBox.Show($"Cartea \"{carteNoua.Titlu}\" a fost adaugata!\nData: {dataAchizitie:dd.MM.yyyy}");
 
-            txtTitlu.Clear();
-            txtAutor.Clear();
-            txtNrExemplare.Clear();
+            // LAB11: Resetam campurile prin ViewModel
+            carteVM.TitluNou = "";
+            carteVM.AutorNou = "";
+            carteVM.NrExemplareNou = "";
         }
 
         // ============================================================
@@ -660,7 +639,7 @@ namespace NivelUIWPF
                 return;
             }
 
-            List<Carte> rezultate = listaCarte
+            List<Carte> rezultate = carteVM.Carti
                 .Where(c => c.Titlu.ToLower().Contains(termen))
                 .ToList();
 

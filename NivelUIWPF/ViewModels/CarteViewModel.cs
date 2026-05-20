@@ -6,8 +6,11 @@ using LibrarieModele.Models;
 
 namespace NivelUIWPF.ViewModels
 {
-    public class CarteViewModel : INotifyPropertyChanged
+    public class CarteViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
+        // =============================================
+        // LAB10: ObservableCollection + INotifyPropertyChanged
+        // =============================================
         private ObservableCollection<Carte> carti;
         public ObservableCollection<Carte> Carti
         {
@@ -21,6 +24,77 @@ namespace NivelUIWPF.ViewModels
             get => carteCurenta;
             set { carteCurenta = value; OnPropertyChanged(); }
         }
+
+        // =============================================
+        // LAB11: Proprietati pentru formularul de adaugare
+        // Binding TwoWay la campurile din XAML
+        // =============================================
+        private string titluNou;
+        public string TitluNou
+        {
+            get => titluNou;
+            set { titluNou = value; OnPropertyChanged(); OnPropertyChanged(nameof(EsteValid)); }
+        }
+
+        private string autorNou;
+        public string AutorNou
+        {
+            get => autorNou;
+            set { autorNou = value; OnPropertyChanged(); OnPropertyChanged(nameof(EsteValid)); }
+        }
+
+        private string nrExemplareNou;
+        public string NrExemplareNou
+        {
+            get => nrExemplareNou;
+            set { nrExemplareNou = value; OnPropertyChanged(); OnPropertyChanged(nameof(EsteValid)); }
+        }
+
+        // =============================================
+        // LAB11: IDataErrorInfo — validare proprietati
+        // =============================================
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case nameof(TitluNou):
+                        if (string.IsNullOrWhiteSpace(TitluNou))
+                            return "Titlul este obligatoriu!";
+                        if (TitluNou.Length < 2)
+                            return "Titlul trebuie sa aiba minim 2 caractere!";
+                        if (TitluNou.Length > 100)
+                            return "Titlul nu poate depasi 100 de caractere!";
+                        break;
+
+                    case nameof(AutorNou):
+                        if (string.IsNullOrWhiteSpace(AutorNou))
+                            return "Autorul este obligatoriu!";
+                        if (AutorNou.Length < 3)
+                            return "Numele autorului trebuie sa aiba minim 3 caractere!";
+                        break;
+
+                    case nameof(NrExemplareNou):
+                        if (string.IsNullOrWhiteSpace(NrExemplareNou))
+                            return "Numarul de exemplare este obligatoriu!";
+                        if (!int.TryParse(NrExemplareNou, out int nr) || nr <= 0)
+                            return "Introduceti un numar pozitiv!";
+                        if (nr > 50)
+                            return "Numarul de exemplare nu poate depasi 50!";
+                        break;
+                }
+                return null;
+            }
+        }
+
+        // LAB11: EsteValid — butonul Adauga se activeaza doar cand toate campurile sunt valide
+        public bool EsteValid =>
+            string.IsNullOrEmpty(this[nameof(TitluNou)]) &&
+            string.IsNullOrEmpty(this[nameof(AutorNou)]) &&
+            string.IsNullOrEmpty(this[nameof(NrExemplareNou)]);
 
         public CarteViewModel()
         {
@@ -36,6 +110,11 @@ namespace NivelUIWPF.ViewModels
             };
 
             CarteCurenta = Carti[0];
+
+            // Initializam campurile goale
+            TitluNou = "";
+            AutorNou = "";
+            NrExemplareNou = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
